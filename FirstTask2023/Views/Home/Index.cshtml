@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DeviceTBL>
+@{
+    ViewData["Title"] = "Home Page";
+    int col1 = 0;
+}
+
+@if (ViewBag.Errors != null)
+{
+    <h2>@ViewBag.Errors</h2>
+}
+else
+{
+    <div class="text-center m-auto p-2">
+        <table class="table table-stripped table-hover">
+            <thead>
+            <th>Row</th>
+            <th>Device Name</th>
+            <th>Device Serial</th>
+            <th>Device Date</th>
+            <th>Current User</th>
+            <th>Operation</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(++col1)</td>
+                        <td>@item.Name</td>
+                        <td>@item.SerialNo</td>
+                        @if (item.AcquisitionDate != null)
+                        {
+                            <td>@item.AcquisitionDate.Value.Date.ToShortDateString()</td>
+                        }
+                        @if (item.CurrentUserId != null)
+                        {
+                            <td>@item.CurrentUser.Username</td>
+                        }
+                        <td>
+                            <a class="btn btn-success" asp-route-id="@item.Id" asp-area="" asp-controller="Home" asp-action="Update">Update</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="table table-bordered">
+                                <thead>
+                                <th>Property</th>
+                                <th>Value</th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item2 in item.DevicePropertyDetailTBL)
+                                    {
+                                        <tr>
+                                            <td>@item2.Property.Name</td>
+                                            <td>@item2.Value</td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <table class="table table-primary">
+        <thead>
+        <th>Create</th>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <td>
+                        <a class="btn btn-success" asp-route-id="@item.Id" asp-area="" asp-controller="Home" asp-action="Create">@item.Name</a>
+                    </td>
+                }
+
+            </tr>
+        </tbody>
+    </table>
+
+}

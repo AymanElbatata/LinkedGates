@@ -1,0 +1,65 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "LinkedGatesDBContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "FirstTask2023.DAL",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[BrandTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceCategoryTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DevicePropertyDetailTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DevicePropertyTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DeviceTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[PropertiesTBL]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[UserTBL]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "aympc.LinkedGatesDB.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

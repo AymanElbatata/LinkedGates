@@ -1,0 +1,82 @@
+﻿@model AddDeviceViewModel
+@{
+    ViewData["Title"] = "Create";
+    var Brands = new SelectList(ViewBag.Brands, "Id", "Name");
+    var Users = new SelectList(ViewBag.Users, "Id", "Username");
+
+}
+
+
+<div class="row mb-3">
+    <div class="col-8">
+        <form asp-action="Create" asp-controller="Home" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input asp-for="@Model.DeviceCategoryId" class="form-control" type="hidden" />
+
+
+
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="col-form-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.SerialNo" class="col-form-label"></label>
+                <input asp-for="@Model.SerialNo" class="form-control" />
+                <span asp-validation-for="@Model.SerialNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AcquisitionDate" class="col-form-label"></label>
+                <input asp-for="@Model.AcquisitionDate" class="form-control" />
+                <span asp-validation-for="@Model.AcquisitionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Memo" class="col-form-label"></label>
+                <input asp-for="@Model.Memo" class="form-control" />
+                <span asp-validation-for="@Model.Memo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.BrandId" class="col-form-label"></label>
+                <select asp-for="@Model.BrandId" asp-items="Brands" class="form-control">
+                    <option>--- Select Brand ---</option>
+                </select>
+                <span asp-validation-for="@Model.BrandId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.CurrentUserId" class="col-form-label"></label>
+                <select asp-for="@Model.CurrentUserId" asp-items="Users" class="form-control">
+                    <option>--- Select User ---</option>
+                </select>
+                <span asp-validation-for="@Model.CurrentUserId" class="text-danger"></span>
+            </div>
+
+            @for (int i = 0; i < Model.DevicePropertyDetailViewModel.Count; i++)
+            {
+                <div class="form-group">
+                    <label class="col-form-label">@Model.DevicePropertyDetailViewModel[i].PropName</label>
+                    <input asp-for="@Model.DevicePropertyDetailViewModel[i].PropertyId" class="form-control" type="hidden"/>
+
+                    <label asp-for="@Model.DevicePropertyDetailViewModel[i].Value" class="col-form-label"></label>
+                    <input asp-for="@Model.DevicePropertyDetailViewModel[i].Value" class="form-control" />
+                    <span asp-validation-for="@Model.DevicePropertyDetailViewModel[i].Value" class="text-danger"></span>
+                </div>
+            }
+
+            <br />
+            <input type="submit" value="Add" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-dark">Back To List</a>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
